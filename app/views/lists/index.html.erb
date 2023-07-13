@@ -2,7 +2,12 @@
 
 <h3>List of Lists</h3>
 <% @lists.each do |list| %>
-<p><%= link_to list.name, list_path(list)  %></p>
+  <%= link_to list.name, list_path(list)  %>
+  <% if list.image_url.present? %>
+    <%= cl_image_tag list.image_url %>
+  <% else %>
+    <%= cl_image_tag("cxhtxsjnbi6bjndprskr") %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Create New List', new_list_path, class: 'button' %>
@@ -12,13 +17,15 @@
 <p><%= movie.title  %></p>
 <% end %>
 
+<h3>List of all Images</h3>
 <!-- app/views/articles/index.html.erb -->
-<%= cl_image_tag("https://res.cloudinary.com/dpvwejoeb/image/upload/v1689243760/of4rymz7ylfpvylxvi4s.jpg",
+<%= cl_image_tag("eqrxblvbqbfigxtqahyl",
       width: 400, height: 300, crop: :fill) %>
 
-<!-- for face detection -->
-<%= cl_image_tag("IMAGE_WITH_FACE_ID",
-      width: 150, height: 150, crop: :thumb, gravity: :face) %>
+
+
+
+
 
 
 <!--
