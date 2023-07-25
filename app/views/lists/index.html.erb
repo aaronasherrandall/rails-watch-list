@@ -3,8 +3,8 @@
 <h3>List of Lists</h3>
 <% @lists.each do |list| %>
   <%= link_to list.name, list_path(list)  %>
-  <% if list.image_url.present? %>
-    <%= cl_image_tag list.image_url %>
+  <% if list.image.attached? %>
+    <%= cl_image_tag list.image.key %>
   <% else %>
     <%= cl_image_tag("cxhtxsjnbi6bjndprskr") %>
   <% end %>

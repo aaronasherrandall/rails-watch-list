@@ -16,11 +16,12 @@ class ListsController < ApplicationController
 
   def create
     # Use Cloudinary's upload method to upload the image
-    image = params[:list].delete(:image)
-    upload = Cloudinary::Uploader.upload(image.path)
+    # image = params[:list].delete(:image)
+    # upload = Cloudinary::Uploader.upload(image.path)
 
-    # Create a new list, assigning the returned URL to image_url
-    @list = List.new(list_params.merge(image_url: upload['url']))
+    # # Create a new list, assigning the returned URL to image_url
+    # @list = List.new(list_params.merge(image_url: upload['url']))
+    @list = List.new(list_params)
 
     if @list.save
       redirect_to list_path(@list), notice: 'List was successfully created.'
@@ -32,6 +33,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name) # Include other params as needed
+    params.require(:list).permit(:name, :image) # Include other params as needed
   end
 end
